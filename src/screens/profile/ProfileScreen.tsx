@@ -10,9 +10,16 @@ import { useNavigation } from "@react-navigation/native";
 import LanguageBottomSheet from "../../components/languages/LanguageBottomSheet";
 import { SheetManager } from "react-native-actions-sheet";
 import {t} from "i18next" 
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {signOut} from "firebase/auth";
+import {auth} from "../../config/firebase"
 const ProfileScreen = () => {
   const navigation=useNavigation()
+  const handleLogout=async()=>{
+    await AsyncStorage.removeItem("USER_DATA")
+    navigation.navigate("AuthStack")  
+    await signOut(auth)
+  }
   return (
     <AppSafeAreaView>
       <HomeHeader />
@@ -22,7 +29,7 @@ const ProfileScreen = () => {
       <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
         <ProfileSelection title={t("MY_ORDERS")} onPress={()=>navigation.navigate("MyOrdersScreen")}/>
         <ProfileSelection title={t("LANGUAGE")} onPress={()=>SheetManager.show("LANG_SHEET")}/>
-        <ProfileSelection title={t("LOGOUT")} />
+        <ProfileSelection title={t("LOGOUT")} onPress={handleLogout}/>
       </View>
       <LanguageBottomSheet />
     </AppSafeAreaView>
