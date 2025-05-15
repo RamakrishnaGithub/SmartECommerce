@@ -1,0 +1,34 @@
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import AppSafeAreaView from "../../components/views/AppSafeAreaView";
+import HomeHeader from "../../components/headers/HomeHeader";
+import ProfileSelection from "../../components/buttons/ProfileSelection";
+import { sharedPaddingHorizontal } from "../../styles/sharedStyles";
+import AppText from "../../components/texts/AppText";
+import { s, vs } from "react-native-size-matters";
+import { useNavigation } from "@react-navigation/native";
+import LanguageBottomSheet from "../../components/languages/LanguageBottomSheet";
+import { SheetManager } from "react-native-actions-sheet";
+import {t} from "i18next" 
+
+const ProfileScreen = () => {
+  const navigation=useNavigation()
+  return (
+    <AppSafeAreaView>
+      <HomeHeader />
+      {/* <AppText variant="bold" style={{ fontSize: s(18), marginTop: vs(8) }}>
+        Hello, ram
+      </AppText> */}
+      <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
+        <ProfileSelection title={t("MY_ORDERS")} onPress={()=>navigation.navigate("MyOrdersScreen")}/>
+        <ProfileSelection title={t("LANGUAGE")} onPress={()=>SheetManager.show("LANG_SHEET")}/>
+        <ProfileSelection title={t("LOGOUT")} />
+      </View>
+      <LanguageBottomSheet />
+    </AppSafeAreaView>
+  );
+};
+
+export default ProfileScreen;
+
+const styles = StyleSheet.create({});
