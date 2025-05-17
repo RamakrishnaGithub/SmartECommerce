@@ -9,10 +9,10 @@ import { commonStyles } from "../../styles/sharedStyles";
 import {t} from "i18next"
 
 interface CartItemProps{
-    title:string,
-    price:string | number,
-    imageURL:string,
-    qty:number,
+    title?:string,
+    price?:string | number,
+    imageURL?:string,
+    qty?:number,
     onPressIncrease:()=> void,
     onPressReduce:()=> void,
     onPressDelete:()=> void,

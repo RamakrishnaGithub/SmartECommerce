@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ActionSheet, { SheetManager } from "react-native-actions-sheet";
 import AppText from "../texts/AppText";
 import AppButton from "../buttons/AppButton";

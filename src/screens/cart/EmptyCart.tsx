@@ -7,10 +7,11 @@ import { colors } from "../../styles/colors";
 import AppButton from "../../components/buttons/AppButton";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {t} from "i18next"
+import { useTranslation } from "react-i18next";
 
 const EmptyCart = () => {
   const navigation = useNavigation();
+  const {t}=useTranslation()
   return (
     <View style={styles.container}>
       <MaterialCommunityIcons
@@ -26,7 +27,7 @@ const EmptyCart = () => {
       <AppButton
         title={t("SRTART_SHOPPING")}
         style={styles.button}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Home" as never)}
       />
     </View>
   );

@@ -14,10 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { addItemToCart, removeItemFromCart, removeProductFromCart } from "../../store/reducers/cartSlice";
 import { shippingFee, taxes } from "../../constants/constants";
-import {t} from "i18next"
+import { useTranslation } from "react-i18next";
 
 const CartScreen = () => {
   const navigation = useNavigation();
+  const {t}=useTranslation()
   const { items } = useSelector((state: RootState) => state.cartSlice);
   const dispatch = useDispatch();
   const totalProductsPricesSum=items.reduce((acc,item)=>acc +Number(item.sum) ,0)
@@ -54,7 +55,7 @@ const CartScreen = () => {
         <TotalsVew itemPrice={totalProductsPricesSum} orderTotal={orderTotal} />
         <AppButton
           title={t("COUNTINUE")}
-          onPress={() => navigation.navigate("CheckOutScreen")}
+          onPress={() => navigation.navigate("CheckOutScreen" as never)}
         />
       </View>
       : 

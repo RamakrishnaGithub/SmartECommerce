@@ -7,9 +7,10 @@ import ProfileScreen from "../screens/profile/ProfileScreen";
 import { colors } from "../styles/colors";
 import { s, vs } from "react-native-size-matters";
 import { Ionicons } from "@expo/vector-icons";
-import {t} from "i18next"
+import { useTranslation } from "react-i18next";
 const Tab = createBottomTabNavigator();
 const MainAppBottomTabs = () => {
+  const {t}=useTranslation()
   return (
     <Tab.Navigator
       screenOptions={{

@@ -4,12 +4,13 @@ import { s, vs } from 'react-native-size-matters'
 import AppText from '../texts/AppText'
 import { colors } from '../../styles/colors'
 import { shippingFee, taxes } from '../../constants/constants'
-import {t} from "i18next"
+import { useTranslation } from 'react-i18next'
 interface TotalsViewProps{
     itemPrice:number,
     orderTotal:number
 }
 const TotalsVew: FC<TotalsViewProps> = ({itemPrice,orderTotal}) => {
+  const {t}=useTranslation()
   return (
     <View style={styles.conatainer}>
       <View style={styles.row}>

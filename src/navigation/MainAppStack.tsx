@@ -5,7 +5,7 @@ import AuthStack from "./AuthStack";
 import MainAppBottomTabs from "./MainAppBottomTabs";
 import CheckOutScreen from "../screens/cart/CheckOutScreen";
 import MyOrdersScreen from "../screens/profile/MyOrdersScreen";
-import { t} from "i18next"
+import { useTranslation } from "react-i18next";
 import { colors } from "../styles/colors";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebase";
@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 const MainAppStack = () => {
   const [isLoading,setIsLoading]=useState<boolean>(true)
   const [userData,setUserData]=useState<object | null>(null)
-
+  const {t}=useTranslation()
   useEffect(()=>{
     onAuthStateChanged(auth,(userData)=>{
       if(userData){

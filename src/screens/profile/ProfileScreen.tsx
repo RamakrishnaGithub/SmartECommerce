@@ -9,15 +9,16 @@ import { s, vs } from "react-native-size-matters";
 import { useNavigation } from "@react-navigation/native";
 import LanguageBottomSheet from "../../components/languages/LanguageBottomSheet";
 import { SheetManager } from "react-native-actions-sheet";
-import {t} from "i18next" 
+import { useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {signOut} from "firebase/auth";
 import {auth} from "../../config/firebase"
 const ProfileScreen = () => {
   const navigation=useNavigation()
+  const {t}=useTranslation()
   const handleLogout=async()=>{
     await AsyncStorage.removeItem("USER_DATA")
-    navigation.navigate("AuthStack")  
+    navigation.navigate("AuthStack" as never)  
     await signOut(auth)
   }
   return (
@@ -27,7 +28,7 @@ const ProfileScreen = () => {
         Hello, ram
       </AppText> */}
       <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
-        <ProfileSelection title={t("MY_ORDERS")} onPress={()=>navigation.navigate("MyOrdersScreen")}/>
+        <ProfileSelection title={t("MY_ORDERS")} onPress={()=>navigation.navigate("MyOrdersScreen" as never)}/>
         <ProfileSelection title={t("LANGUAGE")} onPress={()=>SheetManager.show("LANG_SHEET")}/>
         <ProfileSelection title={t("LOGOUT")} onPress={handleLogout}/>
       </View>
