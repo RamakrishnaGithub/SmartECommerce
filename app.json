@@ -4,7 +4,7 @@
     "slug": "SmartECommerce",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/smartECommerce.webp",
+    "icon": "./assets/smartECommerce.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,13 +17,23 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/smartECommerce.webp",
+        "foregroundImage": "./assets/smartECommerce.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.panchireddyp197.SmartECommerce"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4ba8d640-3b27-4c71-b7eb-cb8011cfa289"
+      }
+    },
+    "owner": "panchireddyp197",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
